@@ -99,6 +99,25 @@
                 android:resource="@xml/customer_sync_adapter" />
         </service>
 
+        <provider
+            android:name="com.odoo.addons.sales.providers.SaleOrderSyncProvider"
+            android:authorities="com.odoo.addons.sales.models.sale_order"
+            android:label="@string/sync_label_sale_order"
+            android:multiprocess="true" />
+
+        <service
+            android:name="com.odoo.addons.sales.services.SaleOrderSyncService"
+            android:exported="true"
+            android:process=":sync_order">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/sale_order_sync_adapter" />
+        </service>
+
         <activity
             android:name="com.odoo.addons.customers.CustomerDetails"
             android:windowSoftInputMode="adjustPan" />

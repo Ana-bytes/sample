@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="framework/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/framework.iml" filepath="$PROJECT_DIR$/.idea/modules/framework.iml" group="framework" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/intro-slider-lib/intro-slider-lib.iml" filepath="$PROJECT_DIR$/.idea/modules/intro-slider-lib/intro-slider-lib.iml" group="framework/intro-slider-lib" />
+    </modules>
+  </component>
+</project>
