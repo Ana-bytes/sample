@@ -1,7 +1,9 @@
 package com.odoo.core.account;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.odoo.R;
 import com.odoo.config.IntroSliderItems;

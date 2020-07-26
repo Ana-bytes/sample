@@ -19,10 +19,14 @@
  */
 package com.odoo.config;
 
+import android.util.Log;
+
 import com.odoo.addons.customers.Customers;
 import com.odoo.addons.sales.SaleOrderList;
 import com.odoo.core.support.addons.AddonsHelper;
 import com.odoo.core.support.addons.OAddon;
+
+import java.lang.reflect.Field;
 
 public class Addons extends AddonsHelper {
 
@@ -36,4 +40,13 @@ public class Addons extends AddonsHelper {
      */
     OAddon customers = new OAddon(Customers.class).setDefault();
     OAddon orders = new OAddon(SaleOrderList.class);
+
+    public Addons() {
+        for (Field addon: getClass().getDeclaredFields()) {
+            Log.i(TAG, "Addons>Addons: " + customers);
+            Log.i(TAG, "Addons>Addons: " + orders);
+            //Log.i(TAG, "Your custom addon: " + yourCustomAddon);
+        }
+    }
+
 }

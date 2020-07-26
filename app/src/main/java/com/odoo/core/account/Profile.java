@@ -21,11 +21,14 @@ package com.odoo.core.account;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.design.widget.CollapsingToolbarLayout;
+//import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.odoo.R;
 import com.odoo.core.orm.ODataRow;
 import com.odoo.core.support.OUser;
