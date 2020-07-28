@@ -19,8 +19,10 @@
  */
 package com.odoo.core.support.addons;
 
-import android.support.annotation.NonNull;
+//import android.support.annotation.NonNull;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.odoo.core.support.addons.fragment.BaseFragment;
 

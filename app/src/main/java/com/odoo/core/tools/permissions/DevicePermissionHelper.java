@@ -1,7 +1,9 @@
 package com.odoo.core.tools.permissions;
 
 import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
+//import android.support.v4.app.ActivityCompat;
+
+import androidx.core.app.ActivityCompat;
 
 import com.odoo.core.support.OdooCompatActivity;
 import com.odoo.core.support.addons.fragment.BaseFragment;

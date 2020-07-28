@@ -28,9 +28,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationCompat.Builder;
+//import android.support.v4.app.NotificationCompat;
+//import android.support.v4.app.NotificationCompat.Builder;
+
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
 
 import com.odoo.R;
 import com.odoo.core.account.BaseSettings;
@@ -43,7 +47,7 @@ import java.util.List;
 public class ONotificationBuilder {
     public static final String TAG = ONotificationBuilder.class.getSimpleName();
     private Context mContext;
-    private Builder mNotificationBuilder = null;
+    private Notification.Builder mNotificationBuilder = null;
     private PendingIntent mNotificationResultIntent = null;
     private NotificationManager mNotificationManager = null;
     private String title, text, bigText;
@@ -142,10 +146,11 @@ public class ONotificationBuilder {
         return this;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void init() {
         mNotificationManager = (NotificationManager) mContext
                 .getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationBuilder = new NotificationCompat.Builder(mContext);
+        mNotificationBuilder = new Notification.Builder(mContext);
         mNotificationBuilder.setContentTitle(title);
         mNotificationBuilder.setContentText(text);
         if (bigText == null)
@@ -165,15 +170,16 @@ public class ONotificationBuilder {
         mNotificationBuilder.setOngoing(mOnGoing);
         mNotificationBuilder.setColor(OResource.color(mContext, notification_color));
         if (bigText != null) {
-            NotificationCompat.BigTextStyle notiStyle = new NotificationCompat.BigTextStyle();
-            notiStyle.setBigContentTitle(title);
-            notiStyle.setSummaryText(text);
-            notiStyle.bigText(bigText);
-            mNotificationBuilder.setStyle(notiStyle);
+//            NotificationCompat.BigTextStyle notiStyle = new NotificationCompat.BigTextStyle();
+//            notiStyle.setBigContentTitle(title);
+//            notiStyle.setSummaryText(text);
+//            notiStyle.bigText(bigText);
+            mNotificationBuilder.setStyle(new Notification.BigTextStyle().bigText(bigText));
         }
         if (bigPictureStyle != null) {
-            mNotificationBuilder.setStyle(new NotificationCompat.BigPictureStyle()
-                    .bigPicture(bigPictureStyle));
+//            mNotificationBuilder.setStyle(new NotificationCompat.BigPictureStyle()
+////                    .bigPicture(bigPictureStyle));
+            mNotificationBuilder.setStyle(new Notification.BigPictureStyle().bigPicture(bigPictureStyle));
         }
 
         if (maxProgress != -1) {
@@ -196,6 +202,7 @@ public class ONotificationBuilder {
         return this;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public ONotificationBuilder build() {
         init();
         if (withVibrate) {
@@ -212,6 +219,7 @@ public class ONotificationBuilder {
         return this;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void _addActions() {
         for (NotificationAction action : mActions) {
             Intent intent = new Intent(mContext, action.getIntent());
