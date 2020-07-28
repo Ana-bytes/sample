@@ -107,12 +107,17 @@ public class Customers extends BaseFragment implements ISyncStatusObserverListen
     @Override
     public void onViewBind(View view, Cursor cursor, ODataRow row) {
         Bitmap img;
-        if (row.getString("image_small").equals("false")) {
-            img = BitmapUtils.getAlphabetImage(getActivity(), row.getString("name"));
-        } else {
+//        if (row.getString("image_small").equals("false")) {
+//            img = BitmapUtils.getAlphabetImage(getActivity(), row.getString("name"));
+//        } else {
+//            img = BitmapUtils.getBitmapImage(getActivity(), row.getString("image_small"));
+//        }
+
+        if (!row.getString("image_small").equals("false")) {
             img = BitmapUtils.getBitmapImage(getActivity(), row.getString("image_small"));
+            OControls.setImage(view, R.id.image_small, img);
         }
-        OControls.setImage(view, R.id.image_small, img);
+
         OControls.setText(view, R.id.name, row.getString("name"));
         OControls.setText(view, R.id.company_name, (row.getString("company_name").equals("false"))
                 ? "" : row.getString("company_name"));
